@@ -1,0 +1,6 @@
+email.resettokenalivetimeinseconds: 200;
+spring:
+  port: 8080
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/basics
