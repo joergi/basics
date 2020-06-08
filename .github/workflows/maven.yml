@@ -21,6 +21,6 @@ jobs:
       with:
         java-version: 11
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -s $GITHUB_WORKSPACE/settings.xml
+      run: mvn -B package --file pom.xml -s $GITHUB_WORKSPACE/settings.xml -e -X
       env:
         GITHUB_TOKEN: ${{ secrets.PACKAGES_READ_ONLY }}
