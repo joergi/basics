@@ -24,7 +24,7 @@
     <server>
       <id>github</id>
       <username>joergi</username>
-      <password>{{secrets.GithubPackagesReadOnly}}</password>
+      <password>{{secrets.PACKAGES_READ_ONLY}}</password>
     </server>
   </servers>
 </settings>
