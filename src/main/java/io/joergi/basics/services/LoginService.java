@@ -12,7 +12,6 @@ public class LoginService {
         return userRepository.findUserByEmailAndPassword(email, password) != null;
     }
 
-
     public boolean loginBUsername(String username, String password) {
         return userRepository.findUserByUsernameAndPassword(username, password) != null;
     }

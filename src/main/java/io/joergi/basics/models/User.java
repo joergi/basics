@@ -1,10 +1,7 @@
 package io.joergi.basics.models;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.lang.NonNull;
 
@@ -25,6 +22,7 @@ public class User {
     private String username;
 
     // TODO UNIQUE
+
     @NonNull
     @Email(message = "Please provide a valid email address")
     private String email;

@@ -10,9 +10,5 @@ public class EmailService {
 
     private UserRepository userRepository;
 
-    public boolean emailIsRegistered(String email) {
-        // TODO
-        return false;
-    }
 
 }

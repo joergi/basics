@@ -12,26 +12,26 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class RegisterService {
 
-    private EmailService emailService;
-
     private UserService userService;
 
     private UserRepository userRepository;
 
-    public StatusCode registerUser(String username, String email, String password) {
+    public StatusCode registerUser(User user) {
 
-        if (emailService.emailIsRegistered(email)) {
+        if (userService.emailIsAlreadyRegistered(user.getEmail())) {
             // TODO check if StatusCode is the right thing
+            log.error("Registration: email %s is already in use", user.getEmail());
             return StatusCode.EMAIL_IS_ALREADY_IN_USE;
         }
 
-        if (userService.usernameIsAlreadyInUse(username)) {
+        if (userService.usernameIsAlreadyInUse(user.getUsername())) {
+            log.error("Registration: Username %s is already in use", user.getUsername());
             return StatusCode.USERNAME_IS_ALREADY_IN_USE;
         }
 
-        userRepository.save(new User(username, email, password));
-        return StatusCode.SUCCESS;
+        userRepository.save(user);
 
+        return StatusCode.SUCCESS;
     }
 
 }

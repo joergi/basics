@@ -1,13 +1,18 @@
 package io.joergi.basics.controllers;
 
 import io.joergi.basics.models.StatusCode;
+import io.joergi.basics.models.User;
 import io.joergi.basics.services.LoginService;
 import io.joergi.basics.services.RegisterService;
+import io.joergi.basics.services.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@Slf4j
 @RestController
 @RequestMapping(value = "/users")
 @AllArgsConstructor
@@ -15,11 +20,20 @@ public class UserController {
 
     private RegisterService registerService;
 
+    private UserService userService;
+
     private LoginService loginService;
 
+    @GetMapping(value = "/")
+    public List<User> findAll(){
+        log.info("findall is called");
+        return userService.findAll();
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/register")
-    public void registerUser(String username, String email, String password) {
-        StatusCode status = registerService.registerUser(username, email, password);
+    public void registerUser(@RequestBody User user) {
+        StatusCode status = registerService.registerUser(user);
     }
 
     @PostMapping(value = "/login")
