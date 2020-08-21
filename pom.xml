@@ -33,13 +33,11 @@
             <artifactId>validation-api</artifactId>
         </dependency>
 
-
 		<!-- embedded mongo-->
 		<dependency>
 			<groupId>de.flapdoodle.embed</groupId>
 			<artifactId>de.flapdoodle.embed.mongo</artifactId>
 		</dependency>
-
 
 		<!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
 		<dependency>

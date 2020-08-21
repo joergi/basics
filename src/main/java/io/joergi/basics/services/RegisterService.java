@@ -1,6 +1,7 @@
 package io.joergi.basics.services;
 
-import io.joergi.basics.models.StatusCode;
+import io.joergi.basics.exceptions.EmailIsAlreadyInUseException;
+import io.joergi.basics.exceptions.UsernameAlreadyInUseException;
 import io.joergi.basics.models.User;
 import io.joergi.basics.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -16,22 +17,17 @@ public class RegisterService {
 
     private UserRepository userRepository;
 
-    public StatusCode registerUser(User user) {
+    public void registerUser(User user) {
 
         if (userService.emailIsAlreadyRegistered(user.getEmail())) {
-            // TODO check if StatusCode is the right thing
-            log.error("Registration: email %s is already in use", user.getEmail());
-            return StatusCode.EMAIL_IS_ALREADY_IN_USE;
+           throw new EmailIsAlreadyInUseException(user.getEmail());
         }
 
         if (userService.usernameIsAlreadyInUse(user.getUsername())) {
-            log.error("Registration: Username %s is already in use", user.getUsername());
-            return StatusCode.USERNAME_IS_ALREADY_IN_USE;
+            throw new UsernameAlreadyInUseException(user.getUsername());
         }
 
         userRepository.save(user);
-
-        return StatusCode.SUCCESS;
     }
 
 }

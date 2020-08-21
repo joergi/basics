@@ -1,6 +1,5 @@
 package io.joergi.basics.controllers;
 
-import io.joergi.basics.models.StatusCode;
 import io.joergi.basics.models.User;
 import io.joergi.basics.services.LoginService;
 import io.joergi.basics.services.RegisterService;
@@ -33,11 +32,12 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/register")
     public void registerUser(@RequestBody User user) {
-        StatusCode status = registerService.registerUser(user);
+        registerService.registerUser(user);
     }
 
     @PostMapping(value = "/login")
     public boolean login(String usernameOrEmail, String password) {
+        log.info(usernameOrEmail + " - "  + password);
         if (!usernameOrEmail.contains("@") || !usernameOrEmail.contains(".")) {
             if (loginService.loginBUsername(usernameOrEmail, password)) {
                 return true;

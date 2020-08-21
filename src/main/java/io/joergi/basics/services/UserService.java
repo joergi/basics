@@ -20,14 +20,11 @@ public class UserService {
     }
 
     public boolean emailIsAlreadyRegistered(String email) {
-        var user = userRepository.findUserByEmail(email);
-        log.info("user is " + user);
-        return (user == null);
+        return userRepository.findUserByEmail(email) != null;
     }
 
     public boolean usernameIsAlreadyInUse(String username){
-        var user = userRepository.findUserByUsername(username);
-        log.info("user is " + user);
-        return (user == null) ;
+        return userRepository.findUserByUsername(username) != null;
+
     }
 }
