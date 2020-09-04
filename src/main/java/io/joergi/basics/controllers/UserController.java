@@ -53,4 +53,9 @@ public class UserController {
 
         return loginService.loginByEmail(usernameOrEmail, password);
     }
+    
+    @GetMapping (value = "/sentry")
+    public void sentryError() {
+        throw new RuntimeException("new sentry error");
+    }
 }
