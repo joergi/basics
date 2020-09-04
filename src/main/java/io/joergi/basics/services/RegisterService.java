@@ -17,7 +17,7 @@ public class RegisterService {
 
     private UserRepository userRepository;
 
-    public void registerUser(User user) {
+    public void registerUser(User user){
 
         if (userService.emailIsAlreadyRegistered(user.getEmail())) {
            throw new EmailIsAlreadyInUseException(user.getEmail());

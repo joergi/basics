@@ -1,5 +1,6 @@
 package io.joergi.basics.controllers;
 
+import io.joergi.basics.exceptions.EmailIsAlreadyInUseException;
 import io.joergi.basics.models.User;
 import io.joergi.basics.services.LoginService;
 import io.joergi.basics.services.RegisterService;
@@ -29,9 +30,10 @@ public class UserController {
         return userService.findAll();
     }
 
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/register")
-    public void registerUser(@RequestBody User user) {
+    public void registerUser(@RequestBody User user){
         registerService.registerUser(user);
     }
 
