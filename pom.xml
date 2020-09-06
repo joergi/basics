@@ -10,10 +10,10 @@
 	</parent>
 
 
-	<artifactId>basics</artifactId>
+	<artifactId>basic-user</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>basics</name>
-	<description>basics with User registry and login </description>
+	<name>basic-user</name>
+	<description>basics with User registry and login and maybe userhandling</description>
 
 	<distributionManagement>
 		<repository>
