@@ -21,6 +21,6 @@ jobs:
       with:
         java-version: 11
     - name: Build with Maven
-      run: mvn -B clean package --file pom.xml -s $GITHUB_WORKSPACE/settings.xml -e -Dmaven.wagon.http.pool=false -Dsecrets.PACKAGES_READ_ONLY
+      run: mvn -B clean package --file pom.xml -s $GITHUB_WORKSPACE/settings.xml -e -Dmaven.wagon.http.pool=false -DPACKAGES_READ_ONLY=${{ secrets.PACKAGES_READ_ONLY }}
       env:
         GITHUB_TOKEN: ${{ secrets.PACKAGES_READ_ONLY }}
