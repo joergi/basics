@@ -24,7 +24,7 @@
     <server>
       <id>github</id>
       <username>joergi</username>
-      <password>${ env.GITHUB_TOKEN }</password>
+      <password>${ env.PACKAGES_READ_ONLY }</password>
     </server>
   </servers>
 </settings>
