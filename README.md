@@ -1,5 +1,7 @@
 # BASICS - REGISTRY / LOGIN
 
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=SonarSource_basics&metric=ncloc)](https://sonarcloud.io/dashboard?id=SonarSource_basics) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=SonarSource_basics&metric=bugs)](https://sonarcloud.io/dashboard?id=SonarSource_basics) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=SonarSource_basics&metric=code_smells)](https://sonarcloud.io/dashboard?id=SonarSource_basics) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=SonarSource_basics&metric=coverage)](https://sonarcloud.io/dashboard?id=SonarSource_basics) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=SonarSource_basics&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=SonarSource_basics)
+
 this project should work as a general user registration and login handler (Backend)
 
 A registration and login for users is needed in most projects, so this can help fulfilling this task.
