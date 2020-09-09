@@ -21,7 +21,8 @@ jobs:
       with:
         java-version: 11
     - name: Build with Maven
-      run: mvn -B clean package --file pom.xml -s $GITHUB_WORKSPACE/settings.xml -e -Dmaven.wagon.http.pool=false
+      run: mvn -B clean package --file pom.xml -s $GITHUB_WORKSPACE/settings.xml -e -Dmaven.wagon.http.pool=false org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar -Dsonar.links.homepage=https://github.com/joergi/basics -Dsonar.links.scm=https://github.com/joergi/basics
       env:
         MVN_AUTH_TOKEN: ${{ secrets.PACKAGES_READ_ONLY }}
+        
         
