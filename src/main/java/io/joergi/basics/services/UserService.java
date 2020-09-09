@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import io.joergi.basics.models.User;
 import io.joergi.basics.repositories.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @AllArgsConstructor
@@ -19,12 +18,14 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    
+    // TODO refactor to UserValidator
     public boolean emailIsAlreadyRegistered(String email) {
         return userRepository.findUserByEmail(email) != null;
     }
 
+    // TODO refactor to UserValidator
     public boolean usernameIsAlreadyInUse(String username){
         return userRepository.findUserByUsername(username) != null;
-
     }
 }

@@ -1,5 +1,7 @@
 package io.joergi.basics.controllers;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -44,7 +46,7 @@ public class UserControllerTest {
     private LoginService loginService;
     
     @MockBean
-    private UserValidator UserValidator;
+    private UserValidator userValidator;
 
     @Test
     public void findAll_should_return_200_and_empty_list() throws Exception {
@@ -62,18 +64,21 @@ public class UserControllerTest {
                 .andExpect(status().isCreated());
     }
 
-    // TODO fix this test
-//    @Test
-//    public void create_should_return_Bad_Request_for_AtSign() throws Exception {
-//        var user = UserUtils.createRandomUser();
-//        user.setUsername("ab@cd");
-//
-//        mvc.perform(post("/users/register")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(objectMapper.writeValueAsString(user))
-//                .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isCreated());
-//    }
+    // FIXME fix this test
+    // should be 4xx not 201
+    @Test
+    public void create_should_return_Bad_Request_for_AtSign() throws Exception {
+        var user = UserUtils.createRandomUser();
+        user.setUsername("ab@cd");
+
+        mvc.perform(post("/users/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(user))
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated());
+        verify(userValidator, times(1)).usernameMustNotContainAtSign(user.getUsername());
+        
+    }
     
     @Test
     public void login_with_username() throws Exception {
@@ -86,8 +91,6 @@ public class UserControllerTest {
                 .params(map)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-        
-        
         
     }
     
