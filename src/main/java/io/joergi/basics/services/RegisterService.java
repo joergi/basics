@@ -1,12 +1,12 @@
 package io.joergi.basics.services;
 
+import org.springframework.stereotype.Service;
+
 import io.joergi.basics.exceptions.EmailIsAlreadyInUseException;
 import io.joergi.basics.exceptions.UsernameAlreadyInUseException;
 import io.joergi.basics.models.User;
 import io.joergi.basics.repositories.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
