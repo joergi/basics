@@ -25,3 +25,15 @@ jobs:
       env:
         MVN_AUTH_TOKEN: ${{ secrets.PACKAGES_READ_ONLY }}
         
+        
+  sonarcloud:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.PACKAGES_READ_ONLY }}
+        SONAR_TOKEN: ${{ secrets.SONARCLOUD }}        
