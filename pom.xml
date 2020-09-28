@@ -1,89 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>io.joergi</groupId>
-		<artifactId>parent-jdk11-mongo</artifactId>
-		<version>2.3.3-6.RELEASE</version>
-	</parent>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.joergi</groupId>
+        <artifactId>parent-jdk11-mongo</artifactId>
+        <version>2.3.3-9.RELEASE</version>
+    </parent>
 
 
-	<artifactId>basic</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>basic</name>
-	<description>basics with User registry and login and maybe userhandling</description>
+    <artifactId>basic</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
+    <name>basic</name>
+    <description>basics with User registry and login and maybe userhandling</description>
 
-	<distributionManagement>
-		<repository>
-			<id>github</id>
-			<name>GitHub joergi Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/joergi/parent-jdk11-mongo</url>
-		</repository>
-	</distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub joergi Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/joergi/parent-jdk11-mongo</url>
+        </repository>
+    </distributionManagement>
 
-	<properties>
-		<java.version>11</java.version>
-		
-    	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-	    <sonar.organization>joergi-github</sonar.organization>
-    	<sonar.projectKey>SonarSource_basics</sonar.projectKey>
-	</properties>
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub joergi Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/joergi/parent-jdk11</url>
+        </repository>
+    </repositories>
+    <properties>
+        <java.version>11</java.version>
 
-	<dependencies>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-		</dependency>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.organization>joergi-github</sonar.organization>
+        <sonar.projectKey>SonarSource_basics</sonar.projectKey>
+    </properties>
 
-		<!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
-		<dependency>
-			<groupId>commons-validator</groupId>
-			<artifactId>commons-validator</artifactId>
-			<version>1.7</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>1.7</version>
+        </dependency>
 
 		<dependency>
 			<groupId>io.sentry</groupId>
-			<artifactId>sentry</artifactId>
-			<version>1.7.30</version>
-		</dependency>
-		<dependency>
-			<groupId>io.sentry</groupId>
-			<artifactId>sentry-spring</artifactId>
+			<artifactId>sentry-logback</artifactId>
 			<version>1.7.30</version>
 		</dependency>
 
+        <!-- Testing Dependencies -->
 
-		<!-- Testing Dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mockito</groupId>
+                    <artifactId>mockito-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>junit</groupId>
-					<artifactId>junit</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.mockito</groupId>
-					<artifactId>mockito-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.5.10</version>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>3.5.10</version>
-			<scope>test</scope>
-		</dependency>
-
-	</dependencies>
+    </dependencies>
 </project>
