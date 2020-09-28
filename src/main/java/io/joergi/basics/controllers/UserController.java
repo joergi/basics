@@ -2,8 +2,8 @@ package io.joergi.basics.controllers;
 
 import java.util.List;
 
+import io.joergi.basics.models.LoginData;
 import org.springframework.http.HttpStatus;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,31 +29,27 @@ public class UserController {
     private RegisterService registerService;
 
     private UserService userService;
-    
+
     private UserValidator userValidator;
 
     private LoginService loginService;
 
     @GetMapping(value = "/")
-    public List<User> findAll(){
+    public List<User> findAll() {
         log.info("findall is called");
         return userService.findAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/register")
-    public void registerUser(@RequestBody User user){
+    public void registerUser(@RequestBody User user) {
         userValidator.usernameMustNotContainAtSign(user.getUsername());
         registerService.registerUser(user);
     }
 
     @PostMapping(value = "/login")
-    public boolean login( @RequestParam final MultiValueMap<String, String> requestBody) {
-        String usernameOrEmail = requestBody.getFirst("usernameOrEmail");
-        String password = requestBody.getFirst("passwword");
-        log.info(usernameOrEmail + " - "  + password);
-        return loginService.loginByUsernameOrEmail(usernameOrEmail, password);
+    public boolean login(@RequestBody LoginData loginData) {
+        return loginService.loginByUsernameOrEmail(loginData.getUsernameOrEmail(), loginData.getPassword());
     }
-    
-    
+
 }
