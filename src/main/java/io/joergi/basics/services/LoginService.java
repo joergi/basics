@@ -1,15 +1,15 @@
 package io.joergi.basics.services;
 
 import io.joergi.basics.repositories.UserRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+
 @Service
+@AllArgsConstructor
 public class LoginService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public boolean loginByUsernameOrEmail(String usernameOrEmail, String password) {
         if (usernameIsNotAnEmail(usernameOrEmail)) {
