@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -79,7 +80,8 @@ public class UserControllerTest {
         verify(userValidator, times(1)).usernameMustNotContainAtSign(user.getUsername());
         
     }
-    
+
+    @Disabled
     @Test
     public void login_with_username() throws Exception {
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
