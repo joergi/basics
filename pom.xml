@@ -30,9 +30,9 @@
             <url>https://maven.pkg.github.com/joergi/parent-jdk11</url>
         </repository>
     </repositories>
+
     <properties>
         <java.version>11</java.version>
-
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.organization>joergi-github</sonar.organization>
         <sonar.projectKey>SonarSource_basics</sonar.projectKey>
@@ -56,6 +56,12 @@
 			<artifactId>sentry-logback</artifactId>
 			<version>1.7.30</version>
 		</dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
 
         <!-- Testing Dependencies -->
 
